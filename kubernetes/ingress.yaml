@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: salary-prediction-ingress
+spec:
+  rules:
+  - host: salary-prediction.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: salary-prediction-service
+            port:
+              number: 80

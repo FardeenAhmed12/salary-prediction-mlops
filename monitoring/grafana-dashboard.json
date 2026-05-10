@@ -1,0 +1,36 @@
+{
+    "dashboard": {
+        "title": "Salary Prediction Monitoring",
+        "tags": [
+            "mlops"
+        ],
+        "timezone": "browser",
+        "panels": [
+            {
+                "title": "Prediction Latency",
+                "type": "graph",
+                "targets": [
+                    {
+                        "expr": "prediction_latency_ms",
+                        "legendFormat": "Latency"
+                    }
+                ]
+            }
+        ],
+        "time": {
+            "from": "now-1h",
+            "to": "now"
+        },
+        "timepicker": {},
+        "templating": {
+            "list": []
+        },
+        "annotations": {
+            "list": []
+        },
+        "refresh": "5s",
+        "schemaVersion": 16,
+        "version": 0,
+        "links": []
+    }
+}

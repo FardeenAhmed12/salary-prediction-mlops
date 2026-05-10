@@ -1,0 +1,13 @@
+pandas
+numpy
+scikit-learn
+matplotlib
+fastapi
+uvicorn
+joblib
+pytest
+pyyaml
+boto3
+python-dotenv
+prometheus-fastapi-instrumentator
+streamlit
