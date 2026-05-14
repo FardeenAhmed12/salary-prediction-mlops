@@ -1,0 +1,4 @@
+[
+  "tests/test_api.py::test_home",
+  "tests/test_api.py::test_predict"
+]
