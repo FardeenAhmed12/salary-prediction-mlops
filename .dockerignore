@@ -1,0 +1,10 @@
+venv/
+.venv/
+__pycache__/
+*.pyc
+.git/
+mlflow.db
+models/
+notebooks/
+k8s/*.tar
+*.deb
