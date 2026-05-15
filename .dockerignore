@@ -8,3 +8,4 @@ models/
 notebooks/
 k8s/*.tar
 *.deb
+
