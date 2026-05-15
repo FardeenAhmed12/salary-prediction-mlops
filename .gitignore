@@ -3,3 +3,5 @@ __pycache__/
 mlruns/
 artifacts/
 .env
+*.tar
+k8s/*.tar

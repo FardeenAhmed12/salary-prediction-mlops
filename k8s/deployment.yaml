@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: salary-mlops-deployment
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: salary-mlops
+
+  template:
+    metadata:
+      labels:
+        app: salary-mlops
+
+    spec:
+      containers:
+      - name: salary-mlops-container
+        image: salary-mlops:latest
+
+        imagePullPolicy: Never
+
+        ports:
+        - containerPort: 8000
