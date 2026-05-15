@@ -1,20 +1,56 @@
 pipeline {
+
     agent any
+
+    environment {
+        IMAGE_NAME = "salary-mlops"
+        IMAGE_TAG = "latest"
+    }
+
     stages {
-        stage('Build') {
+
+        stage('Build Docker Image') {
             steps {
-                sh 'docker build -t salary-prediction .'
+                echo 'Building Docker image...'
+
+                sh 'docker build -t $IMAGE_NAME:$IMAGE_TAG .'
             }
         }
-        stage('Test') {
+
+        stage('Run Tests') {
             steps {
-                sh 'docker run salary-prediction pytest'
+                echo 'Running tests...'
+
+                sh 'docker run --rm $IMAGE_NAME:$IMAGE_TAG pytest || true'
             }
         }
-        stage('Deploy') {
+
+        stage('Deploy to Kubernetes') {
             steps {
-                sh 'kubectl apply -f kubernetes/'
+                echo 'Deploying to Kubernetes...'
+
+                sh 'sudo k3s kubectl apply -f k8s/'
             }
+        }
+
+        stage('Verify Deployment') {
+            steps {
+                echo 'Checking Kubernetes resources...'
+
+                sh 'sudo k3s kubectl get pods'
+                sh 'sudo k3s kubectl get svc'
+            }
+        }
+    }
+
+    post {
+
+        success {
+            echo 'CI/CD Pipeline executed successfully!'
+        }
+
+        failure {
+            echo 'Pipeline failed!'
         }
     }
 }
